@@ -1,0 +1,261 @@
+/* ===== RESET BÁSICO ===== */
+/* Todo navegador tem margens/paddings padrão diferentes.
+   Zerando isso, a gente parte do mesmo ponto em qualquer lugar. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding e border não aumentam o tamanho total do elemento */
+}
+
+/* ===== VARIÁVEIS CSS (CUSTOM PROPERTIES) ===== */
+/* Definidas no :root, ficam disponíveis pra página inteira via var(--nome) */
+:root {
+  --color-bg: #0f0f14;
+  --color-surface: #1a1a22;
+  --color-primary: #4f8cff;
+  --color-primary-hover: #3a73e0;
+  --color-text: #f2f2f5;
+  --color-text-muted: #9a9aa5;
+
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  --radius: 10px;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* ===== HEADER / NAV ===== */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+}
+
+.main-nav {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.nav-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text);
+}
+
+.nav-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== MAIN / VIEWS ===== */
+.app-main {
+  padding: var(--spacing-lg);
+}
+
+/* Regra principal da single page app:
+   toda .view começa escondida... */
+.view {
+  display: none;
+}
+
+/* ...e só a que tiver .active aparece */
+.view.active {
+  display: block;
+}
+
+.view h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.view p {
+  color: var(--color-text-muted);
+}
+
+/* ===== CARDS (Dashboard, Treinos, Corridas) ===== */
+#dashboard-content,
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: var(--spacing-lg);
+  min-width: 240px;
+  flex: 1;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.card p {
+  color: var(--color-text);
+}
+
+.card p.muted {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Card clicável (lista de treinos) */
+.card-clickable {
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.card-clickable:hover {
+  background-color: #21212b;
+  transform: translateY(-2px);
+}
+
+/* ===== DETALHE DO TREINO ===== */
+.btn-voltar {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: var(--spacing-md);
+}
+
+.btn-voltar:hover {
+  color: var(--color-text);
+}
+
+.exercicio-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.exercicio-card h4 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.series-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.serie-pill {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.serie-pill:hover {
+  border-color: var(--color-primary);
+}
+
+.serie-pill.feita {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== SEÇÃO HEADER (título + botão de ação) ===== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.section-header h2 {
+  margin-bottom: 0;
+}
+
+/* ===== BOTÃO PRIMÁRIO ===== */
+.btn-primary {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* ===== FORMULÁRIO ===== */
+.form-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 320px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.form-group input {
+  padding: var(--spacing-sm);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Classe utilitária pra esconder qualquer elemento, reaproveitável */
+.hidden {
+  display: none;
+}
