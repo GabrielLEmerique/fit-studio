@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import Treinos from './components/Treinos';
+import Corridas from './components/Corridas';
 import './App.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <main className="app-main">
         {viewAtiva === 'dashboard' && <Dashboard />}
         {viewAtiva === 'treinos' && <Treinos />}
-        {viewAtiva === 'corridas' && <p>Corridas vai aqui</p>}
+        {viewAtiva === 'corridas' && <Corridas />}
       </main>
     </>
   );
