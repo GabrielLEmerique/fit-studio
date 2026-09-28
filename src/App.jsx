@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import Header from './components/Header';
+import Dashboard from './components/Dashboard';
+import Treinos from './components/Treinos';
 import './App.css';
 
 function App() {
-  // useState devolve DUAS coisas:
-  // 1. o valor atual do estado (viewAtiva)
-  // 2. uma função pra atualizar esse estado (setViewAtiva)
-  // 'dashboard' é o valor inicial, igual a section que tinha 'active' no HTML
   const [viewAtiva, setViewAtiva] = useState('dashboard');
 
   return (
@@ -14,8 +12,8 @@ function App() {
       <Header viewAtiva={viewAtiva} onMudarView={setViewAtiva} />
 
       <main className="app-main">
-        {viewAtiva === 'dashboard' && <p>Dashboard vai aqui</p>}
-        {viewAtiva === 'treinos' && <p>Treinos vai aqui</p>}
+        {viewAtiva === 'dashboard' && <Dashboard />}
+        {viewAtiva === 'treinos' && <Treinos />}
         {viewAtiva === 'corridas' && <p>Corridas vai aqui</p>}
       </main>
     </>
